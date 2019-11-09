@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zombie Game!</title>
+    <link rel='stylesheet' href="./css/style.css"/>
+</head>
+
+<body>
+
+<h1>ZOMBIE GAME</h1>
+<h2>SCORE</h2>
+<h3 id = "scoreDisplay">0</h3>
+
+<INPUT TYPE="image" src="pictures/zombie.gif" id="zombie" onclick="playExpo()">
+<audio id="zombieScream" src="src/Zombie sound.mp3"></audio>
+<audio id="shotgun">
+    <source src="src/Zombie killed.mp3" type="audio/ogg">
+</audio>
+<Input type="button" class="button" id = "resetButton" onclick="resetScore()" value="Reset the Score!">
+
+<script>       
+    let width = (window.innerWidth/2)-100
+    let height = (window.innerHeight/2)
+    zombie = document.getElementById('zombie');
+    scoreDisplay = document.getElementById("scoreDisplay");
+    shotgun = document.getElementById('shotgun');
+    zombieScream.volume = 0.6
+    zombie.style.position="absolute";
+    zombie.style.left = width+"px";
+    zombie.style.top = height+"px";
+
+    let myfristnum = 0
+    let mysecnum = 0
+    var count = 0
+
+    let moveRate = setInterval(moveZombie, 2000);
+    
+
+    function moveZombie(){
+        let widthVariable = window.innerWidth
+        let heightVariable = window.innerHeight
+
+        myfristnum = Math.random()* (widthVariable - 103);
+        mysecnum = Math.random()* (heightVariable - 100); 
+
+        zombie.style.position="absolute";
+        zombie.style.left = myfristnum+"px";
+        zombie.style.top = mysecnum+"px";
+
+        document.getElementById('zombieScream').play();
+       
+    }
+    
+    function getPoint(){
+        clearInterval(moveRate)
+        count+=1;
+        scoreDisplay.innerHTML= count;
+        moveRate = setInterval(moveZombie, 2000);
+        setTimeout(function() {moveZombie();},1000);
+    }
+
+    function playExpo(){
+        getPoint()
+        zombie.src = "pictures/expo.gif";
+        shotgun.play();
+        setTimeout(function() {zombie.src = "pictures/zombie.gif"},1000)
+
+    }
+
+    function resetScore(){
+        scoreDisplay.innerHTML = 0;
+        count = 0;
+        moveZombie();
+} 
+
+
+</script>
+
+
+
+</body>

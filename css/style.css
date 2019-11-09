@@ -1,0 +1,42 @@
+h1,h2,h3 {
+            text-align: center;
+            color: white;
+        }
+body {
+            background-image: url("../pictures/background0.jpg");
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
+.button {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    float: left;
+    position: relative; 
+    left: 43%; 
+    top: 50%;
+    
+}
+
+#zombie{
+    left: 100px;
+    height: 100px;
+}
+
+
+
+.button:hover {   
+    background-color: rgb(228, 220, 207)}
+.button:active {
+            background-color: rgb(228, 220, 207);
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+}
